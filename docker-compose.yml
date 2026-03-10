@@ -1,0 +1,28 @@
+services:
+  rust-dev:
+    build: .
+    container_name: dual_venue_mm
+    volumes:
+      - .:/app
+      - cargo-cache:/usr/local/cargo/registry
+      - build-cache:/app/target
+    stdin_open: true
+    tty: true
+    # Default: run tests
+    command: cargo test
+
+  # Run the live integration against real Hyperliquid WebSocket
+  run:
+    build: .
+    container_name: dual_venue_mm_run
+    volumes:
+      - .:/app
+      - cargo-cache:/usr/local/cargo/registry
+      - build-cache:/app/target
+    environment:
+      - RUST_LOG=info   # change to debug for full depth logging
+    command: cargo run
+
+volumes:
+  cargo-cache:
+  build-cache:
