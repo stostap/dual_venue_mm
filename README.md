@@ -73,5 +73,5 @@ cargo test -- --nocapture           # show log output
 
 ## Architecture
 
-See the architecture document (arch_doc_v2.docx) for full design rationale,
+See the architecture document (arch_doc_v2.pdf) for full design rationale,
 component diagrams, and decision records.
